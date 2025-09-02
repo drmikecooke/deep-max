@@ -1,0 +1,18 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: background
+  sections:
+  - file: basic
+- file: notebooks
+- file: markdown-notebooks
+- file: tester
+  sections:
+  - file: deepmax/mult_n
+  - file: deepmax/add_n
+  - file: deepmax/cooker
+  - file: deepmax/empirical
+  - file: deepmax/plot
