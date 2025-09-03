@@ -7,7 +7,9 @@ chapters:
 - file: background
   sections:
   - file: basic
-- file: notebooks
+  - file: complexity
+  - file: stream
+  - file: maxwave
 - file: markdown-notebooks
 - file: tester
   sections:

@@ -6,8 +6,9 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Index &#8212; My sample book</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Complexity makes life simpler &#8212; My sample book</title>
   
   
   
@@ -56,9 +57,13 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'genindex';</script>
-    <link rel="index" title="Index" href="#" />
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'complexity';</script>
+    <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Potential for streaming" href="stream.html" />
+    <link rel="prev" title="Basic equations" href="basic.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -121,8 +126,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -178,10 +181,10 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="background.html">Background</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="background.html">Background</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="basic.html">Basic equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="complexity.html">Complexity makes life simpler</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Complexity makes life simpler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stream.html">Potential for streaming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maxwave.html">Maximum wave profile</a></li>
 </ul>
@@ -266,7 +269,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fgenindex.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fcomplexity.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -278,6 +281,54 @@
   </span>
 <span class="btn__text-container">Open issue</span>
 </a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/complexity.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
 </li>
       
   </ul>
@@ -319,7 +370,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -330,11 +383,19 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1></h1>
+    <h1>Complexity makes life simpler</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cauchy-riemann">Cauchy-Riemann</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -344,13 +405,48 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
+  <section class="tex2jax_ignore mathjax_ignore" id="complexity-makes-life-simpler">
+<h1>Complexity makes life simpler<a class="headerlink" href="#complexity-makes-life-simpler" title="Link to this heading">#</a></h1>
+<p>We look at how our basic equations simplify in the complex domain.</p>
+<p>In 2D, the incompressibility equation <span class="math notranslate nohighlight">\(\mathbf{\nabla} \cdot \mathbf{v}=0\)</span> becomes <span class="math notranslate nohighlight">\(u_x+v_y=0\)</span>, where the subscript represent the corresponding partial derivative, and the <span class="math notranslate nohighlight">\(x,y\)</span> components of <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> are <span class="math notranslate nohighlight">\(u,v\)</span>.</p>
+<p>Irrotational motion <span class="math notranslate nohighlight">\(\mathbf{\nabla} \times \mathbf{v}=0\)</span> is given by <span class="math notranslate nohighlight">\(v_x-u_y=0\)</span>.</p>
+<section id="cauchy-riemann">
+<h2>Cauchy-Riemann<a class="headerlink" href="#cauchy-riemann" title="Link to this heading">#</a></h2>
+<p>These relations are reminiscent of the Cauchy-Riemann relations at the root of analytic function theory.</p>
+<p>An <em>analytic function</em> is a mapping of open subsets of the complex planes <span class="math notranslate nohighlight">\(z=x+iy\)</span> and <span class="math notranslate nohighlight">\(f=g+ih\)</span>, such that <span class="math notranslate nohighlight">\(f\)</span> can be represented as a convergent power series of <span class="math notranslate nohighlight">\(z\)</span> in such domains.</p>
+<p>Cauchy and Riemann studied this situation and found it was necessary and sufficient that the mapping had the form of being differentiable, and <span class="math notranslate nohighlight">\(g_x=h_y\)</span>, <span class="math notranslate nohighlight">\(g_y=-h_x\)</span>. These can be derived by considering <span class="math notranslate nohighlight">\(df/dz\)</span> as giving the same result when <span class="math notranslate nohighlight">\(dz=dx\)</span> and <span class="math notranslate nohighlight">\(dz=idy\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[g_x+ih_x=\frac1i(g_y+ih_y)\]</div>
+<p>For our velocity relations, we can define a complex function <span class="math notranslate nohighlight">\(w=u-iv\)</span>. The minus sign is necessary to make <span class="math notranslate nohighlight">\(w\)</span> satisfy the Cauchy-Riemann equations, according to the incompressibility and irrotational conditions above.</p>
+<p>Differentiating the Cauchy-Riemann equations, <span class="math notranslate nohighlight">\(g_{xx}=h_{yx}=h_{xy}=-g_{yy}\)</span>, gives the 2D Laplace equation <span class="math notranslate nohighlight">\(\nabla^2g=0\)</span>, and <span class="math notranslate nohighlight">\(\nabla^2h=0\)</span>, similarly. The functions <span class="math notranslate nohighlight">\(g,h\)</span> connected by their being part of an analytic function <span class="math notranslate nohighlight">\(f\)</span> are called harmonic conjugates.</p>
+<p><img alt="cauchy" src="_images/cauchy.svg" /></p>
+<p>Another aspect of analytic functions we need is Cauchy’s integral theorem that contour integrals in simply connected domains <span class="math notranslate nohighlight">\(\oint fdz=0\)</span>. This means that in such domains we can define potential functions <span class="math notranslate nohighlight">\(\int_{z_0}^zfdz\)</span> that are independent of the path from the base point <span class="math notranslate nohighlight">\(z_0\)</span>:</p>
+<blockquote>
+<div><p>Going “up” along one path and back along the other gives a closed contour, which integral is zero, according to Cauchy’s integral theorem. But this closed contour can also be viewed as giving the difference in value between the two paths integrals, so they give the same value!</p>
+</div></blockquote>
+<p>This all works so long as the function is analytic on the domain. More interesting effects arise where there are singularities either within or near the relevant domain. Such singularities include poles, logarithms, and algebraic roots. We will see how some of these features affect the maximum wave that we are interested in here.</p>
+</section>
+</section>
 
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- 
-</div>
-
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
 
                 </article>
               
@@ -362,12 +458,45 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="basic.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Basic equations</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="stream.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Potential for streaming</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cauchy-riemann">Cauchy-Riemann</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

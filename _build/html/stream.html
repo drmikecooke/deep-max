@@ -6,8 +6,9 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Index &#8212; My sample book</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Potential for streaming &#8212; My sample book</title>
   
   
   
@@ -56,9 +57,13 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'genindex';</script>
-    <link rel="index" title="Index" href="#" />
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'stream';</script>
+    <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Maximum wave profile" href="maxwave.html" />
+    <link rel="prev" title="Complexity makes life simpler" href="complexity.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -121,8 +126,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -178,11 +181,11 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="background.html">Background</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="background.html">Background</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="basic.html">Basic equations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="complexity.html">Complexity makes life simpler</a></li>
-<li class="toctree-l2"><a class="reference internal" href="stream.html">Potential for streaming</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Potential for streaming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maxwave.html">Maximum wave profile</a></li>
 </ul>
 </details></li>
@@ -266,7 +269,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fgenindex.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fstream.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -278,6 +281,54 @@
   </span>
 <span class="btn__text-container">Open issue</span>
 </a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/stream.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
 </li>
       
   </ul>
@@ -330,7 +381,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1></h1>
+    <h1>Potential for streaming</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -344,13 +395,33 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
+  <section class="tex2jax_ignore mathjax_ignore" id="potential-for-streaming">
+<h1>Potential for streaming<a class="headerlink" href="#potential-for-streaming" title="Link to this heading">#</a></h1>
+<p>We have seen that incompressible, irrotational flows in 2D can be expressed as analytic functions <span class="math notranslate nohighlight">\(w=u-iv\)</span> of <span class="math notranslate nohighlight">\(z=x+iy\)</span>. We now define a complex potential <span class="math notranslate nohighlight">\(\chi=\int_{z_0}^zwdz\)</span>. Thus <span class="math notranslate nohighlight">\(w=d\chi/dz\)</span>. Different base points <span class="math notranslate nohighlight">\(z_0\)</span> change the value <span class="math notranslate nohighlight">\(\chi(z)\)</span> by a constant (possibly a complex number). This is similar to gauge invariance in electromagnetic and Yang-Mills theory.</p>
+<p>Separating <span class="math notranslate nohighlight">\(\chi=\phi+i\psi\)</span>, we find <span class="math notranslate nohighlight">\(u=\phi_x=\psi_y\)</span> and <span class="math notranslate nohighlight">\(v=\phi_y=-\psi_x\)</span>. Returning to vector notation <span class="math notranslate nohighlight">\(\mathbf v=\mathbf\nabla\phi\)</span>, so <span class="math notranslate nohighlight">\(\phi\)</span> is a potential function for the flow.</p>
+<p>The <span class="math notranslate nohighlight">\(\psi\)</span> function is a little more difficult to interpret. One could see it as a remnant of the curl of the <span class="math notranslate nohighlight">\(z\)</span>-component of a 3D vector function where the other components are zero everywhere. Let us instead view <span class="math notranslate nohighlight">\(\psi\)</span> as a 0-form, and look at the change in <span class="math notranslate nohighlight">\(\psi\)</span> along <span class="math notranslate nohighlight">\(\mathbf v\)</span>: <span class="math notranslate nohighlight">\(d\psi(\mathbf v)=u\psi_x+v\psi_y=-uv+uv=0\)</span>. The flow is parallel to the constant <span class="math notranslate nohighlight">\(\psi\)</span> contours. This is a very useful property for finding free surfaces and other boundaries. The function  <span class="math notranslate nohighlight">\(\psi\)</span> is generally called the stream function.</p>
+<p>A further observation is that the potential and stream functions separately satisfy the Laplace equation. This can either be traced to the incompressibility and irrotationality, or more generally to the Cauchy-Riemann equations, as seen previously.</p>
+</section>
 
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- 
-</div>
-
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
 
                 </article>
               
@@ -362,6 +433,24 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="complexity.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Complexity makes life simpler</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="maxwave.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Maximum wave profile</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
