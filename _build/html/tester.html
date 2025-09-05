@@ -62,8 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'tester';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Module implementing \(w_n\) and \(\chi_n\) using multiplicative basis" href="deepmax/mult_n.html" />
-    <link rel="prev" title="Notebooks with MyST Markdown" href="markdown-notebooks.html" />
+    <link rel="next" title="Module using multiplicative basis" href="deepmax/mult_n.html" />
+    <link rel="prev" title="Coefficient collocation" href="coefficients.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -187,17 +187,21 @@
 <li class="toctree-l2"><a class="reference internal" href="complexity.html">Complexity makes life simpler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stream.html">Potential for streaming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="maxwave.html">Maximum wave profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="periodicals.html">Periodicals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="potentials.html">Basis potentials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coefficients.html">Coefficient collocation</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Testing module deepmax</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="deepmax/mult_n.html">Module implementing <span class="math notranslate nohighlight">\(w_n\)</span> and <span class="math notranslate nohighlight">\(\chi_n\)</span> using multiplicative basis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deepmax/add_n.html">Basis of singular velocity with added Fourier sequence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deepmax/mult_n.html">Module using multiplicative basis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deepmax/add.html"><code class="code docutils literal notranslate"><span class="pre">deepmax.add</span></code> submodule</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deepmax/cooker.html">Cooker for finding optimum components for maximum-height wave</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deepmax/empirical.html">Some empirical data and approximations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deepmax/plot.html">submodule <code class="docutils literal notranslate"><span class="pre">plot</span></code> giving contour plot and grid</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="niggle.html">Niggling problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deepmax/mult.html">Module using multiplicative basis</a></li>
 </ul>
 
     </div>
@@ -500,7 +504,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f4edc5610&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f48df6090&gt;]
 </pre></div>
 </div>
 <img alt="_images/477fd01743969d219bad4c687009e020341f9b8149252f49e882e24b15a5e130.png" src="_images/477fd01743969d219bad4c687009e020341f9b8149252f49e882e24b15a5e130.png" />
@@ -513,7 +517,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f4ee25d10&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f48e6a710&gt;]
 </pre></div>
 </div>
 <img alt="_images/45a5f7c821069b5e6d99c0c40b1bbbc9d570c340ea47571456392498e0c6267a.png" src="_images/45a5f7c821069b5e6d99c0c40b1bbbc9d570c340ea47571456392498e0c6267a.png" />
@@ -534,9 +538,9 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># using add_n basis</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">deepmax.add_n</span><span class="w"> </span><span class="kn">import</span> <span class="n">chi_n</span><span class="p">,</span><span class="n">w_n</span><span class="p">,</span><span class="n">C_n</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">deepmax.add</span><span class="w"> </span><span class="kn">import</span> <span class="n">a_n</span><span class="p">,</span><span class="n">alpha_n</span><span class="p">,</span><span class="n">C_n</span>
 
-<span class="n">set_n</span><span class="p">(</span><span class="n">w_n</span><span class="p">,</span><span class="n">chi_n</span><span class="p">,</span><span class="n">C_n</span><span class="p">)</span>
+<span class="n">set_n</span><span class="p">(</span><span class="n">a_n</span><span class="p">,</span><span class="n">alpha_n</span><span class="p">,</span><span class="n">C_n</span><span class="p">)</span>
 
 <span class="n">N</span><span class="o">=</span><span class="mi">44</span>
 <span class="n">X</span><span class="o">=</span><span class="n">X_N</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">1.38</span><span class="p">)</span>
@@ -548,7 +552,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(0.14106342651475173), np.float64(0.8863276488578954))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(0.14106342658775456), np.float64(0.8863276493165856))
 </pre></div>
 </div>
 </div>
@@ -582,7 +586,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/eaed06132577817047c9ddb8c211472171ac3c4ffee6b2cbd19f26b54d3808ae.png" src="_images/eaed06132577817047c9ddb8c211472171ac3c4ffee6b2cbd19f26b54d3808ae.png" />
+<img alt="_images/2111b680f2b7791ad761991a33308d4a9ec77e319c8e101c4b01c5517d252335.png" src="_images/2111b680f2b7791ad761991a33308d4a9ec77e319c8e101c4b01c5517d252335.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -621,7 +625,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f4d421710&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f4843ea90&gt;]
 </pre></div>
 </div>
 <img alt="_images/e28599b890cf4fb45d97bbe2c7dde1c41242a7b6d643dea4344da942f118e38b.png" src="_images/e28599b890cf4fb45d97bbe2c7dde1c41242a7b6d643dea4344da942f118e38b.png" />
@@ -634,10 +638,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f4eff8450&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f482d2690&gt;]
 </pre></div>
 </div>
-<img alt="_images/5dc37091cb99f2eab648ebcef86388c93aa9b673ccbf90186a8e9bb19c9d42fb.png" src="_images/5dc37091cb99f2eab648ebcef86388c93aa9b673ccbf90186a8e9bb19c9d42fb.png" />
+<img alt="_images/e7264ece94272565224111788d609608b50e85b90e1b6a0d9dfff582f773b1bb.png" src="_images/e7264ece94272565224111788d609608b50e85b90e1b6a0d9dfff582f773b1bb.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -647,7 +651,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(2.859265256595356e-06)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(2.8593195346669764e-06)
 </pre></div>
 </div>
 </div>
@@ -687,12 +691,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="markdown-notebooks.html"
+       href="coefficients.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Notebooks with MyST Markdown</p>
+        <p class="prev-next-title">Coefficient collocation</p>
       </div>
     </a>
     <a class="right-next"
@@ -700,7 +704,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Module implementing <span class="math notranslate nohighlight">\(w_n\)</span> and <span class="math notranslate nohighlight">\(\chi_n\)</span> using multiplicative basis</p>
+        <p class="prev-next-title">Module using multiplicative basis</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

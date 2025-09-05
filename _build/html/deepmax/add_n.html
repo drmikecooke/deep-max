@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Basis of singular velocity with added Fourier sequence &#8212; My sample book</title>
+    <title>deepmax.add_n submodule &#8212; My sample book</title>
   
   
   
@@ -63,7 +63,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Cooker for finding optimum components for maximum-height wave" href="cooker.html" />
-    <link rel="prev" title="Module implementing \(w_n\) and \(\chi_n\) using multiplicative basis" href="mult_n.html" />
+    <link rel="prev" title="Module using multiplicative basis" href="mult_n.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -187,17 +187,20 @@
 <li class="toctree-l2"><a class="reference internal" href="../complexity.html">Complexity makes life simpler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../stream.html">Potential for streaming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../maxwave.html">Maximum wave profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../periodicals.html">Periodicals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../potentials.html">Basis potentials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../coefficients.html">Coefficient collocation</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../tester.html">Testing module deepmax</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="mult_n.html">Module implementing <span class="math notranslate nohighlight">\(w_n\)</span> and <span class="math notranslate nohighlight">\(\chi_n\)</span> using multiplicative basis</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Basis of singular velocity with added Fourier sequence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mult_n.html">Module using multiplicative basis</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#"><code class="code docutils literal notranslate"><span class="pre">deepmax.add_n</span></code> submodule</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cooker.html">Cooker for finding optimum components for maximum-height wave</a></li>
 <li class="toctree-l2"><a class="reference internal" href="empirical.html">Some empirical data and approximations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot.html">submodule <code class="docutils literal notranslate"><span class="pre">plot</span></code> giving contour plot and grid</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../niggle.html">Niggling problems</a></li>
 </ul>
 
     </div>
@@ -381,7 +384,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Basis of singular velocity with added Fourier sequence</h1>
+    <h1>deepmax.add_n submodule</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -395,19 +398,19 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="basis-of-singular-velocity-with-added-fourier-sequence">
-<h1>Basis of singular velocity with added Fourier sequence<a class="headerlink" href="#basis-of-singular-velocity-with-added-fourier-sequence" title="Link to this heading">#</a></h1>
-<p>We need to adjust the Fourier velocity sequence to be zero at <span class="math notranslate nohighlight">\(z=0\)</span>, to maintain this property for the maximum wave:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="deepmax-add-n-submodule">
+<h1><code class="code docutils literal notranslate"><span class="pre">deepmax.add_n</span></code> submodule<a class="headerlink" href="#deepmax-add-n-submodule" title="Link to this heading">#</a></h1>
+<p>We implement the additive basis:</p>
 <div class="math notranslate nohighlight">
-\[w_n=1-\exp(-inz)\]</div>
-<p>The corresponding potential sequence is:</p>
+\[a_n=1-\exp(-inz)\]</div>
+<p>and corresponding potential sequence:</p>
 <div class="math notranslate nohighlight">
-\[\chi_n=\int_0^zw_ndz=\frac in(1-\exp(-inz)+z=\frac inw_n+z\]</div>
+\[\alpha_n=z+\frac ina_n\]</div>
 <p>The singular parts are:</p>
 <div class="math notranslate nohighlight">
-\[w_0=\sqrt{1-\exp(-iz)}\]</div>
+\[a_0=\sqrt{1-\exp(-iz)}=\sqrt{a_1}\]</div>
 <div class="math notranslate nohighlight">
-\[\chi_0=2i\left[w_0+\frac12\ln\frac{1-w_0}{1+w_0}\right]\]</div>
+\[\alpha_0=-2i\left[a_0+\frac12\ln\frac{1-a_0}{1+a_0}\right]\]</div>
 <p>The square root singularity requires <span class="math notranslate nohighlight">\(\sum C_0=\pm1\)</span> when we do the linear problem of finding coefficients that give <span class="math notranslate nohighlight">\(P=0\)</span>. We can thus replace the zero row by 0, except for <span class="math notranslate nohighlight">\(A_{00}=1\)</span>, to enforce this, via <span class="math notranslate nohighlight">\(\sum_nA_{0n}C_n=C_0=\pm1=B_0\)</span>.</p>
 <p>The rest of the matrix problem is then <span class="math notranslate nohighlight">\(AC=B\)</span> with <span class="math notranslate nohighlight">\(A_{kn}=Q_{kn}=\psi_n(z_k)=\Im\chi_n(z_k),B_k=0\)</span> for <span class="math notranslate nohighlight">\(k&gt;1\)</span>.</p>
 <div class="cell docutils container">
@@ -489,7 +492,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Module implementing <span class="math notranslate nohighlight">\(w_n\)</span> and <span class="math notranslate nohighlight">\(\chi_n\)</span> using multiplicative basis</p>
+        <p class="prev-next-title">Module using multiplicative basis</p>
       </div>
     </a>
     <a class="right-next"

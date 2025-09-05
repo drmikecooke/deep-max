@@ -14,7 +14,7 @@
 # ---
 
 # %% [markdown]
-# # Module implementing $w_n$ and $\chi_n$ using multiplicative basis
+# # Module using multiplicative basis
 #
 # The square root singularity requires $\sum C_n=\pm1$ when we do the linear problem of finding coefficients that give $P=0$, We can thus replace the zero row by 1, $A_{0n}=1$, to enforce this, via $\sum_nA_{0n}C_n=\pm1=B_0$.
 #

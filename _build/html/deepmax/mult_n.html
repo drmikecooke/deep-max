@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Module implementing \(w_n\) and \(\chi_n\) using multiplicative basis &#8212; My sample book</title>
+    <title>Module using multiplicative basis &#8212; My sample book</title>
   
   
   
@@ -62,7 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'deepmax/mult_n';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Basis of singular velocity with added Fourier sequence" href="add_n.html" />
+    <link rel="next" title="deepmax.add submodule" href="add.html" />
     <link rel="prev" title="Testing module deepmax" href="../tester.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -187,17 +187,21 @@
 <li class="toctree-l2"><a class="reference internal" href="../complexity.html">Complexity makes life simpler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../stream.html">Potential for streaming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../maxwave.html">Maximum wave profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../periodicals.html">Periodicals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../potentials.html">Basis potentials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../coefficients.html">Coefficient collocation</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../tester.html">Testing module deepmax</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Module implementing <span class="math notranslate nohighlight">\(w_n\)</span> and <span class="math notranslate nohighlight">\(\chi_n\)</span> using multiplicative basis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="add_n.html">Basis of singular velocity with added Fourier sequence</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Module using multiplicative basis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="add.html"><code class="code docutils literal notranslate"><span class="pre">deepmax.add</span></code> submodule</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cooker.html">Cooker for finding optimum components for maximum-height wave</a></li>
 <li class="toctree-l2"><a class="reference internal" href="empirical.html">Some empirical data and approximations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot.html">submodule <code class="docutils literal notranslate"><span class="pre">plot</span></code> giving contour plot and grid</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../niggle.html">Niggling problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mult.html">Module using multiplicative basis</a></li>
 </ul>
 
     </div>
@@ -381,7 +385,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Module implementing w_n and \chi_n using multiplicative basis</h1>
+    <h1>Module using multiplicative basis</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -395,8 +399,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="module-implementing-w-n-and-chi-n-using-multiplicative-basis">
-<h1>Module implementing <span class="math notranslate nohighlight">\(w_n\)</span> and <span class="math notranslate nohighlight">\(\chi_n\)</span> using multiplicative basis<a class="headerlink" href="#module-implementing-w-n-and-chi-n-using-multiplicative-basis" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="module-using-multiplicative-basis">
+<h1>Module using multiplicative basis<a class="headerlink" href="#module-using-multiplicative-basis" title="Link to this heading">#</a></h1>
 <p>The square root singularity requires <span class="math notranslate nohighlight">\(\sum C_n=\pm1\)</span> when we do the linear problem of finding coefficients that give <span class="math notranslate nohighlight">\(P=0\)</span>, We can thus replace the zero row by 1, <span class="math notranslate nohighlight">\(A_{0n}=1\)</span>, to enforce this, via <span class="math notranslate nohighlight">\(\sum_nA_{0n}C_n=\pm1=B_0\)</span>.</p>
 <p>The rest of the matrix problem is then <span class="math notranslate nohighlight">\(AC=B\)</span> with <span class="math notranslate nohighlight">\(A_{kn}=Q_{kn}=\psi_n(z_k)=\Im\chi_n(z_k),B_k=0\)</span> for <span class="math notranslate nohighlight">\(k&gt;1\)</span>.</p>
 <div class="cell docutils container">
@@ -481,11 +485,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="add_n.html"
+       href="add.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Basis of singular velocity with added Fourier sequence</p>
+        <p class="prev-next-title"><code class="code docutils literal notranslate"><span class="pre">deepmax.add</span></code> submodule</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

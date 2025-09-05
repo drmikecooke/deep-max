@@ -62,7 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'maxwave';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Notebooks with MyST Markdown" href="markdown-notebooks.html" />
+    <link rel="next" title="Periodicals" href="periodicals.html" />
     <link rel="prev" title="Potential for streaming" href="stream.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -187,17 +187,21 @@
 <li class="toctree-l2"><a class="reference internal" href="complexity.html">Complexity makes life simpler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stream.html">Potential for streaming</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Maximum wave profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="periodicals.html">Periodicals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="potentials.html">Basis potentials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coefficients.html">Coefficient collocation</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="tester.html">Testing module deepmax</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="deepmax/mult_n.html">Module implementing <span class="math notranslate nohighlight">\(w_n\)</span> and <span class="math notranslate nohighlight">\(\chi_n\)</span> using multiplicative basis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deepmax/add_n.html">Basis of singular velocity with added Fourier sequence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deepmax/mult_n.html">Module using multiplicative basis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deepmax/add.html"><code class="code docutils literal notranslate"><span class="pre">deepmax.add</span></code> submodule</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deepmax/cooker.html">Cooker for finding optimum components for maximum-height wave</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deepmax/empirical.html">Some empirical data and approximations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deepmax/plot.html">submodule <code class="docutils literal notranslate"><span class="pre">plot</span></code> giving contour plot and grid</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="niggle.html">Niggling problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deepmax/mult.html">Module using multiplicative basis</a></li>
 </ul>
 
     </div>
@@ -417,7 +421,7 @@ document.write(`
 <p>thus:</p>
 <div class="math notranslate nohighlight">
 \[A^2(1-a^2-2ia)i=2a+2ia^2\]</div>
-<p>The real part gives <span class="math notranslate nohighlight">\(2A^2a=2a\)</span> and therefore <span class="math notranslate nohighlight">\(A^2=1\)</span>. The imaginary part becomes <span class="math notranslate nohighlight">\(1-a^2=2a^2\)</span>, which gives <span class="math notranslate nohighlight">\(a=1/\sqrt3\)</span>. This is the gradient of the slope, and the angle below the horizontal <span class="math notranslate nohighlight">\(\theta=\arctan(1/\sqrt3)=\pi/6=30\degree\)</span>. The angle from the vertical is thus <span class="math notranslate nohighlight">\(\pi/3\)</span>, giving a peak angle of <span class="math notranslate nohighlight">\(2\pi/3\)</span>.</p>
+<p>The real part gives <span class="math notranslate nohighlight">\(2A^2a=2a\)</span> and therefore <span class="math notranslate nohighlight">\(A^2=1\)</span>. The imaginary part becomes <span class="math notranslate nohighlight">\(1-a^2=2a^2\)</span>, which gives <span class="math notranslate nohighlight">\(a=1/\sqrt3\)</span>. This is the gradient of the slope, and the angle below the horizontal <span class="math notranslate nohighlight">\(\theta=\arctan(1/\sqrt3)=\pi/6=30^\circ\)</span>. The angle from the vertical is thus <span class="math notranslate nohighlight">\(\pi/3\)</span>, giving a peak angle of <span class="math notranslate nohighlight">\(2\pi/3\)</span>.</p>
 <p>We can give a contour plot of our <span class="math notranslate nohighlight">\(R\)</span> function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -446,7 +450,7 @@ document.write(`
 </div>
 </div>
 <p>We note the <span class="math notranslate nohighlight">\(R=0\)</span> contour has the specified kink of <span class="math notranslate nohighlight">\(2\pi/3\)</span> angle.</p>
-<p>The complex potential corresponding to this flow, based at 0, is <span class="math notranslate nohighlight">\(\chi=\int_0^zwdz=2Ai^{1/2}z^{3/2}/3=2wz/3\)</span>. The stream function <span class="math notranslate nohighlight">\(\psi=\chi\)</span>. These contours are shown in blue.</p>
+<p>The complex potential corresponding to this flow, based at 0, is <span class="math notranslate nohighlight">\(\chi=\int_0^zwdz=2Ai^{1/2}z^{3/2}/3=2wz/3\)</span>. The stream function <span class="math notranslate nohighlight">\(\psi=\Im\chi\)</span>. These contours are shown in blue.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">W</span><span class="o">*</span><span class="n">Z</span><span class="o">/</span><span class="mi">3</span>
@@ -505,11 +509,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="markdown-notebooks.html"
+       href="periodicals.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Notebooks with MyST Markdown</p>
+        <p class="prev-next-title">Periodicals</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
