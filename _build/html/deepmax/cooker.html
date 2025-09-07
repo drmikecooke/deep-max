@@ -200,6 +200,12 @@
 <li class="toctree-l2"><a class="reference internal" href="plot.html">submodule <code class="docutils literal notranslate"><span class="pre">plot</span></code> giving contour plot and grid</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../convergence.html">Convergence tests</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cadd.html"><code class="code docutils literal notranslate"><span class="pre">deepmax.add</span></code> basis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cmult.html"><code class="code docutils literal notranslate"><span class="pre">deepmax.mult</span></code> basis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cmult_n.html"><code class="code docutils literal notranslate"><span class="pre">deepmax.mult_n</span></code> basis</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../niggle.html">Niggling problems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mult.html">Module using multiplicative basis</a></li>
 </ul>
@@ -407,6 +413,7 @@ document.write(`
 <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">root</span>
 
 <span class="n">chi_n</span><span class="p">,</span><span class="n">w_n</span><span class="p">,</span><span class="n">C_n</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="kc">None</span><span class="p">,</span><span class="kc">None</span>
+
 <span class="k">def</span><span class="w"> </span><span class="nf">set_n</span><span class="p">(</span><span class="n">W</span><span class="p">,</span><span class="n">CHI</span><span class="p">,</span><span class="n">C_N</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">w_n</span><span class="p">,</span><span class="n">chi_n</span><span class="p">,</span><span class="n">C_n</span>
     <span class="n">w_n</span><span class="p">,</span><span class="n">chi_n</span><span class="p">,</span><span class="n">C_n</span><span class="o">=</span><span class="n">W</span><span class="p">,</span><span class="n">CHI</span><span class="p">,</span><span class="n">C_N</span>
@@ -474,6 +481,27 @@ document.write(`
         <span class="nb">print</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;See above&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">sol</span><span class="o">.</span><span class="n">x</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">Z_N</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="n">alpha</span><span class="p">):</span>
+    <span class="n">X</span><span class="o">=</span><span class="n">X_N</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">alpha</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">X</span><span class="o">+</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">Y</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">fR</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span><span class="n">X</span><span class="p">):</span>
+    <span class="n">Z</span><span class="o">=</span><span class="n">X</span><span class="o">+</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">Y</span>
+    <span class="k">return</span> <span class="n">R</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span><span class="n">C_n</span><span class="p">(</span><span class="n">Z</span><span class="p">))</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">Zcooker</span><span class="p">(</span><span class="n">Z0</span><span class="p">):</span>
+    <span class="n">X</span><span class="p">,</span><span class="n">Y0</span><span class="o">=</span><span class="n">Z0</span><span class="o">.</span><span class="n">real</span><span class="p">,</span><span class="n">Z0</span><span class="o">.</span><span class="n">imag</span>
+    <span class="n">sol</span><span class="o">=</span><span class="n">root</span><span class="p">(</span><span class="n">fR</span><span class="p">,</span><span class="n">Y0</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">X</span><span class="p">,))</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">sol</span><span class="o">.</span><span class="n">success</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;See above&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">X</span><span class="o">+</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">sol</span><span class="o">.</span><span class="n">x</span>
 </pre></div>
 </div>
 </div>

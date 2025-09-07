@@ -20,5 +20,10 @@ chapters:
   - file: deepmax/cooker
   - file: deepmax/empirical
   - file: deepmax/plot
+- file: convergence
+  sections:
+  - file: cadd
+  - file: cmult
+  - file: cmult_n
 - file: niggle
 - file: deepmax/mult

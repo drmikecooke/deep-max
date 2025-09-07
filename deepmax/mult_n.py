@@ -55,3 +55,5 @@ def C_n(Z):
     b=np.zeros(len(Z))
     b[0]=1
     return np.linalg.solve(a,b)
+
+wchiC=(w_n,chi_n,C_n)

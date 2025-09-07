@@ -200,6 +200,12 @@
 <li class="toctree-l2"><a class="reference internal" href="deepmax/plot.html">submodule <code class="docutils literal notranslate"><span class="pre">plot</span></code> giving contour plot and grid</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="convergence.html">Convergence tests</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="cadd.html"><code class="code docutils literal notranslate"><span class="pre">deepmax.add</span></code> basis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmult.html"><code class="code docutils literal notranslate"><span class="pre">deepmax.mult</span></code> basis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cmult_n.html"><code class="code docutils literal notranslate"><span class="pre">deepmax.mult_n</span></code> basis</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="niggle.html">Niggling problems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="deepmax/mult.html">Module using multiplicative basis</a></li>
 </ul>
@@ -408,9 +414,29 @@ document.write(`
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">root</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">deepmax.cooker</span><span class="w"> </span><span class="kn">import</span> <span class="n">X_N</span><span class="p">,</span><span class="n">cooker</span><span class="p">,</span><span class="n">set_n</span><span class="p">,</span><span class="n">P</span><span class="p">,</span><span class="n">R</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">deepmax.cooker</span><span class="w"> </span><span class="kn">import</span> <span class="n">X_N</span><span class="p">,</span><span class="n">cooker</span><span class="p">,</span><span class="n">set_n</span><span class="p">,</span><span class="n">P</span><span class="p">,</span><span class="n">R</span><span class="p">,</span><span class="n">Zcooker</span><span class="p">,</span><span class="n">Z_N</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">deepmax.empirical</span><span class="w"> </span><span class="kn">import</span> <span class="n">Ye</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">deepmax.plot</span><span class="w"> </span><span class="kn">import</span> <span class="n">grid</span><span class="p">,</span><span class="n">contours</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># using mult basis</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">deepmax.mult</span><span class="w"> </span><span class="kn">import</span> <span class="n">wchiC</span>
+<span class="n">set_n</span><span class="p">(</span><span class="o">*</span><span class="n">wchiC</span><span class="p">)</span>
+
+<span class="n">N</span><span class="o">=</span><span class="mi">26</span>
+<span class="n">Z0</span><span class="o">=</span><span class="n">Z_N</span><span class="p">(</span><span class="n">Ye</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">1.25</span><span class="p">)</span>
+<span class="n">Zc</span><span class="o">=</span><span class="n">Zcooker</span><span class="p">(</span><span class="n">Z0</span><span class="p">)</span>
+<span class="n">Hc</span><span class="o">=-</span><span class="n">Zc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imag</span>
+<span class="n">Hc</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(0.14106343959957984)
 </pre></div>
 </div>
 </div>
@@ -504,7 +530,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f48df6090&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f75d0a3d0&gt;]
 </pre></div>
 </div>
 <img alt="_images/477fd01743969d219bad4c687009e020341f9b8149252f49e882e24b15a5e130.png" src="_images/477fd01743969d219bad4c687009e020341f9b8149252f49e882e24b15a5e130.png" />
@@ -517,7 +543,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f48e6a710&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f75ac5f90&gt;]
 </pre></div>
 </div>
 <img alt="_images/45a5f7c821069b5e6d99c0c40b1bbbc9d570c340ea47571456392498e0c6267a.png" src="_images/45a5f7c821069b5e6d99c0c40b1bbbc9d570c340ea47571456392498e0c6267a.png" />
@@ -625,7 +651,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f4843ea90&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f74098e90&gt;]
 </pre></div>
 </div>
 <img alt="_images/e28599b890cf4fb45d97bbe2c7dde1c41242a7b6d643dea4344da942f118e38b.png" src="_images/e28599b890cf4fb45d97bbe2c7dde1c41242a7b6d643dea4344da942f118e38b.png" />
@@ -638,7 +664,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f482d2690&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f6ff129d0&gt;]
 </pre></div>
 </div>
 <img alt="_images/e7264ece94272565224111788d609608b50e85b90e1b6a0d9dfff582f773b1bb.png" src="_images/e7264ece94272565224111788d609608b50e85b90e1b6a0d9dfff582f773b1bb.png" />

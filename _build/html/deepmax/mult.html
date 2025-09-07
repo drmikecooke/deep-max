@@ -199,6 +199,12 @@
 <li class="toctree-l2"><a class="reference internal" href="plot.html">submodule <code class="docutils literal notranslate"><span class="pre">plot</span></code> giving contour plot and grid</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../convergence.html">Convergence tests</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cadd.html"><code class="code docutils literal notranslate"><span class="pre">deepmax.add</span></code> basis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cmult.html"><code class="code docutils literal notranslate"><span class="pre">deepmax.mult</span></code> basis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cmult_n.html"><code class="code docutils literal notranslate"><span class="pre">deepmax.mult_n</span></code> basis</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../niggle.html">Niggling problems</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Module using multiplicative basis</a></li>
 </ul>
@@ -405,7 +411,7 @@ document.write(`
 \[m_n=\exp(-inz)\sqrt{1-\exp(-iz)}\]</div>
 <p>The potential basis is:</p>
 <div class="math notranslate nohighlight">
-\[\mu_n=-2i\sum_k(-1)^k\binom{n-1}{k}\frac{\xi^{2k+1}}{2k+1}\]</div>
+\[\mu_n=-2i\sum_k(-1)^k\binom{n-1}{k}\frac{\xi^{2k+3}}{2k+3}\]</div>
 <p>The square root singularity requires <span class="math notranslate nohighlight">\(\sum C_n=\pm1\)</span> when we do the linear problem of finding coefficients that give <span class="math notranslate nohighlight">\(P=0\)</span>, We can thus replace the zero row by 1, <span class="math notranslate nohighlight">\(A_{0n}=1\)</span>, to enforce this, via <span class="math notranslate nohighlight">\(\sum_nA_{0n}C_n=\pm1=B_0\)</span>.</p>
 <p>The rest of the matrix problem is then <span class="math notranslate nohighlight">\(AC=B\)</span> with <span class="math notranslate nohighlight">\(A_{kn}=Q_{kn}=\psi_n(z_k)=\Im\chi_n(z_k),B_k=0\)</span> for <span class="math notranslate nohighlight">\(k&gt;1\)</span>.</p>
 <div class="cell docutils container">
@@ -422,24 +428,8 @@ document.write(`
     <span class="n">ezN</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">ez</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">xi</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">*</span><span class="n">xi</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">ezN</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">chi_0</span><span class="p">(</span><span class="n">Z</span><span class="p">):</span>
-    <span class="n">z</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">Z</span><span class="p">])</span>
-    <span class="n">ez</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">z</span><span class="p">)</span>
-    <span class="n">xi</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">ez</span><span class="p">)</span>
-    <span class="k">return</span> <span class="mi">2</span><span class="n">j</span><span class="o">*</span><span class="p">(</span><span class="n">xi</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">xi</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">xi</span><span class="p">))</span><span class="o">/</span><span class="mi">2</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">chi_n</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span><span class="n">N</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;Evaluate chi_n from z=0 (see Fuchs.md)&#39;&#39;&#39;</span>
-    <span class="n">z</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">Z</span><span class="p">])</span>
-    <span class="n">ez</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">z</span><span class="p">)</span>
-    <span class="n">xi</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">ez</span><span class="p">)</span>
-    <span class="n">K</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">N</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-    <span class="n">xiK</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">xi</span><span class="p">,</span><span class="n">K</span><span class="p">)</span><span class="nd">@np</span><span class="o">.</span><span class="n">diag</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">K</span><span class="p">))</span><span class="o">/</span><span class="n">K</span><span class="p">)</span>
-    <span class="n">C</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">comb</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)])</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="n">j</span><span class="o">*</span><span class="n">xiK</span><span class="nd">@C</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">chi_0</span><span class="p">(</span><span class="n">z</span><span class="p">),</span><span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-
 <span class="k">def</span><span class="w"> </span><span class="nf">C_n</span><span class="p">(</span><span class="n">Z</span><span class="p">):</span>
-    <span class="n">CHI</span><span class="o">=</span><span class="n">chi_n</span><span class="p">(</span><span class="n">Z</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span><span class="nb">len</span><span class="p">(</span><span class="n">Z</span><span class="p">))</span>
+    <span class="n">CHI</span><span class="o">=</span><span class="n">mu_n</span><span class="p">(</span><span class="n">Z</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span><span class="nb">len</span><span class="p">(</span><span class="n">Z</span><span class="p">))</span>
     <span class="n">a</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Z</span><span class="p">)),</span><span class="o">*</span><span class="n">CHI</span><span class="o">.</span><span class="n">imag</span><span class="p">])</span>
     <span class="n">b</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Z</span><span class="p">))</span>
     <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
@@ -450,21 +440,25 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">fromfunction</span><span class="p">(</span><span class="n">comb</span><span class="p">,(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">M_kn</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">2</span><span class="n">j</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="n">k</span><span class="o">*</span><span class="n">comb</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">k</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">k</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[  1.,   0.,   0.,   0.,   0.,   0.,   0.,   0.,   0.,   0.],
-       [  1.,   1.,   0.,   0.,   0.,   0.,   0.,   0.,   0.,   0.],
-       [  1.,   2.,   1.,   0.,   0.,   0.,   0.,   0.,   0.,   0.],
-       [  1.,   3.,   3.,   1.,   0.,   0.,   0.,   0.,   0.,   0.],
-       [  1.,   4.,   6.,   4.,   1.,   0.,   0.,   0.,   0.,   0.],
-       [  1.,   5.,  10.,  10.,   5.,   1.,   0.,   0.,   0.,   0.],
-       [  1.,   6.,  15.,  20.,  15.,   6.,   1.,   0.,   0.,   0.],
-       [  1.,   7.,  21.,  35.,  35.,  21.,   7.,   1.,   0.,   0.],
-       [  1.,   8.,  28.,  56.,  70.,  56.,  28.,   8.,   1.,   0.],
-       [  1.,   9.,  36.,  84., 126., 126.,  84.,  36.,   9.,   1.]])
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">mu_n</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">z</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">Z</span><span class="p">])</span>
+    <span class="n">ez</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">z</span><span class="p">)</span>
+    <span class="n">xi</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">ez</span><span class="p">)</span>
+    <span class="n">K</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">xiK</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">xi</span><span class="p">,</span><span class="n">K</span><span class="p">)</span>
+    <span class="n">MU</span><span class="o">=</span><span class="p">(</span><span class="n">xiK</span><span class="nd">@np</span><span class="o">.</span><span class="n">fromfunction</span><span class="p">(</span><span class="n">M_kn</span><span class="p">,(</span><span class="n">N</span><span class="p">,</span><span class="n">N</span><span class="p">)))</span>
+    <span class="n">MU</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">2</span><span class="n">j</span><span class="o">*</span><span class="p">(</span><span class="n">xi</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">xi</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">xi</span><span class="p">))</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">MU</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">wchiC</span><span class="o">=</span><span class="p">(</span><span class="n">m_n</span><span class="p">,</span><span class="n">mu_n</span><span class="p">,</span><span class="n">C_n</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

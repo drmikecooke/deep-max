@@ -60,3 +60,5 @@ def C_n(Z):
     b=np.zeros(len(Z))
     b[0]=1
     return np.linalg.solve(PSI,b)
+
+wchiC=(a_n,alpha_n,C_n)

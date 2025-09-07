@@ -22,9 +22,8 @@
 #
 # The potential basis is:
 #
-# $$\mu_n=-2i\sum_k(-1)^k\binom{n-1}{k}\frac{\xi^{2k+1}}{2k+1}$$
-
-# %% [markdown]
+# $$\mu_n=-2i\sum_k(-1)^k\binom{n-1}{k}\frac{\xi^{2k+3}}{2k+3}$$
+#
 # The square root singularity requires $\sum C_n=\pm1$ when we do the linear problem of finding coefficients that give $P=0$, We can thus replace the zero row by 1, $A_{0n}=1$, to enforce this, via $\sum_nA_{0n}C_n=\pm1=B_0$.
 #
 # The rest of the matrix problem is then $AC=B$ with $A_{kn}=Q_{kn}=\psi_n(z_k)=\Im\chi_n(z_k),B_k=0$ for $k>1$.
@@ -42,24 +41,8 @@ def m_n(z,N):
     ezN=np.power.outer(ez,np.arange(N))
     return (xi.reshape(*xi.shape,1)*ezN)[0]
 
-def chi_0(Z):
-    z=np.array([Z])
-    ez=np.exp(-1j*z)
-    xi=np.sqrt(1-ez)
-    return 2j*(xi+np.log((1-xi)/(1+xi))/2)[0]
-
-def chi_n(Z,N):
-    '''Evaluate chi_n from z=0 (see Fuchs.md)'''
-    z=np.array([Z])
-    ez=np.exp(-1j*z)
-    xi=np.sqrt(1-ez)
-    K=np.arange(3,2*N,2)
-    xiK=np.power.outer(xi,K)@np.diag((-1)**np.arange(len(K))/K)
-    C=np.array([[comb(a,b) for a in range(N-1)] for b in range(N-1)])
-    return np.insert(-2j*xiK@C,0,chi_0(z),axis=-1)[0]
-
 def C_n(Z):
-    CHI=chi_n(Z[1:],len(Z))
+    CHI=mu_n(Z[1:],len(Z))
     a=np.array([np.ones(len(Z)),*CHI.imag])
     b=np.zeros(len(Z))
     b[0]=1
@@ -67,6 +50,19 @@ def C_n(Z):
 
 
 # %%
-np.fromfunction(comb,(10,10))
+def M_kn(k,n):
+    return -2j*(-1)**k*comb(n-1,k)/(2*k+3)
+
 
 # %%
+def mu_n(Z,N):
+    z=np.array([Z])
+    ez=np.exp(-1j*z)
+    xi=np.sqrt(1-ez)
+    K=np.arange(3,2*(N+1),2)
+    xiK=np.power.outer(xi,K)
+    MU=(xiK@np.fromfunction(M_kn,(N,N)))
+    MU[...,0]=2j*(xi+np.log((1-xi)/(1+xi))/2)
+    return MU[0]
+
+wchiC=(m_n,mu_n,C_n)

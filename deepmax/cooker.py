@@ -21,6 +21,7 @@ import numpy as np
 from scipy.optimize import root
 
 chi_n,w_n,C_n=None,None,None
+
 def set_n(W,CHI,C_N):
     global w_n,chi_n,C_n
     w_n,chi_n,C_n=W,CHI,C_N
@@ -85,3 +86,21 @@ def cooker(Y0,X):
         print(sol)
         raise Exception('See above')
     return sol.x
+
+
+# %%
+def Z_N(Y,N,alpha):
+    X=X_N(N,alpha)
+    return X+1j*Y(X)
+
+def fR(Y,X):
+    Z=X+1j*Y
+    return R(Z,C_n(Z))
+
+def Zcooker(Z0):
+    X,Y0=Z0.real,Z0.imag
+    sol=root(fR,Y0,args=(X,))
+    if not sol.success:
+        print(sol)
+        raise Exception('See above')
+    return X+1j*sol.x
